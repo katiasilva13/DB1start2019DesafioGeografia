@@ -24,7 +24,6 @@ public class InputOutput {
                 + "Gramado são permitidas.\n");
         return nomeCidade;
     }
-
     public static void mostrar(String nomeCidade, String estado, String capital, String mensagem) {
         TrataValida t = new TrataValida();
         JOptionPane pane = new JOptionPane();

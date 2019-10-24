@@ -1,5 +1,4 @@
 # DB1start2019DesafioGeografia
- https://github.com/katiasilva13/DB1start2019-DesafioGeografia.git
 DB1 Start, Novembro/2019.  Prova técnica: Desafio Geografia
  * Desafio de Geografia - 3
  * Programa em que o usuário poderá inserir um nome de cidade. 

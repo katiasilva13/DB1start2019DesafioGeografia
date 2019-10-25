@@ -17,7 +17,7 @@ public class TrataValida {
     public static String uf(String nomeCidade) {
         String[] pr = {"curitiba", "maringa", "londrina", "pinhais"};
         String[] sc = {"chapeco", "joinvile", "joinville", "blumenau", "florianopolis"};
-        String[] rs = {"gramado", "porto alegre"};
+        String[] rs = {"gramado", "porto alegre", "portoalegre"};
 
         if (Arrays.asList(pr).contains(nomeCidade)) {
             return "Pertence ao Paraná (PR).";
@@ -31,19 +31,14 @@ public class TrataValida {
     }
 
     public static String capital(String nomeCidade) {
-        String[] capitais = {"curitiba", "florianopolis", "porto alegre"};
-
-        if (Arrays.asList(capitais).contains(nomeCidade)) {
-            return "É capital.";
-        } else {
-            return "Não é capital.";
-        }
+        String[] capitais = {"curitiba", "florianopolis", "porto alegre", "portoalegre"};
+        return (Arrays.asList(capitais).contains(nomeCidade)) ? "É capital." : "Não é capital.";
     }
 
     public static String tratarInput(String nomeCidade) {
         String convertedString = Normalizer.normalize(nomeCidade, Normalizer.Form.NFD);
         convertedString = convertedString.replaceAll("[^\\p{ASCII}]", "");
-        return convertedString.toLowerCase();
+        return convertedString.toLowerCase().trim();
     }
 
     public static boolean inputValida(String nomeCidade) {
@@ -53,5 +48,5 @@ public class TrataValida {
     public static boolean cidadeValida(String estado) {
         return !(estado.equalsIgnoreCase("Cidade não reconhecida."));
     }
-    
+
 }

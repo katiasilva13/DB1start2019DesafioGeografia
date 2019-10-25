@@ -24,25 +24,32 @@ public class InputOutput {
                 + "Gramado são permitidas.\n");
         return nomeCidade;
     }
+
     public static void mostrar(String nomeCidade, String estado, String capital, String mensagem) {
         TrataValida t = new TrataValida();
         JOptionPane pane = new JOptionPane();
-        nomeCidade = perguntarCidade();
-        nomeCidade = t.tratarInput(nomeCidade);
+        
+        try {
+            nomeCidade = perguntarCidade();
 
-        if (!t.inputValida(nomeCidade)) {
-            pane.showMessageDialog(pane, "Tchau!");
-        } else {
-            estado = t.uf(nomeCidade);
-            if (!t.cidadeValida(estado)) {
-                mensagem = estado;
+            if (!t.inputValida(nomeCidade)) {
+                pane.showMessageDialog(pane, "Tchau!");
             } else {
-                capital = t.capital(nomeCidade);
-                mensagem = estado + "\n" + capital;
+                nomeCidade = t.tratarInput(nomeCidade);
+                estado = t.uf(nomeCidade);
+                if (!t.cidadeValida(estado)) {
+                    mensagem = estado;
+                } else {
+                    capital = t.capital(nomeCidade);
+                    mensagem = estado + "\n" + capital;
+                }
+                JOptionPane.showMessageDialog(pane, mensagem);
+                mostrar(nomeCidade, estado, capital, mensagem);
             }
-            JOptionPane.showMessageDialog(pane, mensagem);
-            mostrar(nomeCidade, estado, capital, mensagem);
+        } catch (Exception e) {
+            pane.showMessageDialog(pane, "Ops! Parece que ocorreu um erro!");
         }
+
     }
 
 }
